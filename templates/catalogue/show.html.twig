@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+
+{% block h1 %}{{ product.title|capitalize }}{% endblock %}          
+
+
+{% block body %}
+
+    <a class="btn btn-dark" href="{{ path('app_catalog') }}">Catalogue</a>
+
+    <div class="shadow p-4 my-4 bg-white">
+        <img src="{{ asset('image/defaut.png') }}" alt="" class="imgDefaut30">
+    </div>
+
+    <div class="shadow p-4 my-4 bg-white">
+        <h2>Prix : {{ product.price }} €</h2>
+    </div>
+
+    <div class="shadow p-4 my-4 bg-white">
+        <h2>Description : {{ product.description }}</h2>
+    </div>
+
+    <div class="shadow p-4 my-4 bg-white">
+        <h2>Catégorie : {{ product.category.name }}</h2>
+    </div>
+
+    <div class="shadow p-4 my-4 bg-white">
+        <h2>Marque : {{ product.brand.name }}</h2>
+    </div>
+
+    <div class="shadow p-4 my-4 bg-white">
+        <h2>Matière(s) :</h2>
+        <ul class="list-group mt-2">
+            {% for material in product.materials %}
+                <li class="list-group-item">{{ material.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+{% endblock %}

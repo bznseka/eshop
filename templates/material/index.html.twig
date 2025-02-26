@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Material index{% endblock %}
+
+{% block body %}
+    <h1>Liste des matières</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for material in materials %}
+            <tr>
+                <td>{{ material.id }}</td>
+                <td>{{ material.name }}</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_material_show', {'id': material.id}) }}">Afficher</a>
+                    <a class="btn btn-primary" href="{{ path('app_material_edit', {'id': material.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_material_new') }}">Nouvelle matière</a>
+{% endblock %}
